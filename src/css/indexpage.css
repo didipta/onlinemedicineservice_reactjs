@@ -1,0 +1,402 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Dongle&family=Poppins:wght@300&family=Shippori+Antique&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    text-decoration:none;
+    
+}
+
+body {
+    margin: 0;
+}
+#preloader {
+    background: #486485 url(https://cdn.dribbble.com/users/1215152/screenshots/4525615/refill_medicine_loader.gif) no-repeat center center;
+    background-size: 20%;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+.logo {
+    width:150px;
+    display: flex;
+    margin: 15px;
+    margin-left: 25px;
+    position:absolute;
+}
+
+    .logo img {
+    width: 35px;
+    height: 35px;
+    border-radius:50%;
+    background-color:deeppink;
+    
+}
+
+.logo span {
+    font-size: 1.1rem;
+    color: rgb(255, 0, 119);
+}
+
+    .logo h3 {
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: rgb(87, 87, 87);
+    margin-top: 5px;
+    margin-left:10px;
+}
+.index_body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.index_nav {
+    position: relative;
+}
+
+.index_nav ul {
+    text-align: center;
+    margin-left: 45%;
+    margin-top: 8px;
+}
+
+    .index_nav ul li {
+        width: 100px;
+        display: inline-block;
+        margin: 15px;
+        margin-left: 35px;
+        padding: 10px;
+    }
+
+        .index_nav ul li:hover {
+            background-color: rgba(68, 65, 66, 0.185);
+            border: 1px solid rgba(68, 65, 66, 0.185);
+            border-radius: 3px;
+            color: rgb(240, 240, 240);
+        }
+
+        .index_nav ul li a {
+            color: rgb(31, 31, 31);
+            font-weight: 900;
+            font-size: 1rem;
+            text-decoration: none;
+        }
+
+.index_body_contain {
+    width: 100%;
+    height: 750px;
+    background-color: white;
+    position: relative;
+    display: flex;
+}
+
+.index_heading {
+    display: flex;
+}
+ .heading_title
+ {
+     margin:70px;
+     margin-top:90px;
+     padding:10px;
+ }
+    .heading_title h3 {
+        margin:20px;
+        margin-top:40px;
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+        font-family: 'Yellowtail', cursive;
+    }
+.heading_title h5{
+           
+    margin:20px;
+    font-weight:900;
+    font-size:1rem;
+    letter-spacing:5px;
+        
+}
+    .heading_title p {
+        width: 400px;
+        margin: 20px;
+        letter-spacing: 1px;
+        text-justify: inter-word;
+        text-align: initial;
+        font-size: 0.8rem;
+    }
+.index_button {
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    margin-left:25px;
+    border: 2px solid rgb(255, 0, 98);
+    background-color: rgb(236, 14, 88);
+    font-weight: 900;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    cursor: pointer;
+    outline: transparent;
+    transition: box-shadow .2s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+}
+
+.index_heading img {
+    width: 800px;
+    height: 700px;
+}
+.socail_media_app
+{
+    position:absolute;
+    top:90vh;
+    right:0;
+    margin:10px;
+}
+    .socail_media_app i {
+        font-size: 1.8rem;
+        margin: 20px;
+        color: rgb(58, 57, 57);
+       
+    }
+.sign-body {
+    width: 100%;
+    height: 100vh;
+    background-image: url("https://cdn.wallpapersafari.com/20/35/EUiOoT.jpg");
+    background-size: cover;
+}
+.signin-title {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    padding: 50px;
+    background-color: rgba(8, 16, 90, 0.466);
+    border-radius: 4px;
+    box-shadow: 10px 12px 15px 12px rgba(14, 76, 245, 0.404);
+}
+    .signin-title a
+    {
+        text-decoration:none;
+    }
+    .signin-title h1 {
+        font-family: 'Segoe Print';
+        color: rgb(243, 243, 243);
+        margin: 10px;
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+    }
+
+    .signin-title p {
+        width: 350px;
+        margin: 10px;
+        font-size: .8rem;
+        color: rgb(243, 243, 243);
+    }
+
+.sign-in-form {
+    margin-top: 20px;
+}
+
+.input-field {
+    max-width: 380px;
+    width: 100%;
+    background-color: #dedfe2;
+    margin: 15px 0;
+    margin-top: 25px;
+    height: 55px;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    padding: 0 0.4rem;
+    position: relative;
+    overflow: hidden;
+}
+    .input-field:hover {
+        box-shadow: 2px 3px 2px 2px rgba(126, 224, 81, 0.61);
+    }
+
+    .input-field i {
+        text-align: center;
+        line-height: 55px;
+        color: #525252;
+        transition: 0.5s;
+        font-size: 1rem;
+    }
+
+    .input-field input {
+        background: none;
+        outline: none;
+        border: none;
+        line-height: 2;
+        font-weight: 600;
+        font-size: 0.8rem;
+        color: #333;
+    }
+
+        .input-field input::placeholder {
+            font-size:.9rem;
+            color: rgb(146, 145, 145);
+            font-weight: 500;
+            letter-spacing:1px;
+        }
+
+.social-text {
+    padding: 0.8rem 0;
+    font-size: .8rem;
+    font-weight: 900;
+}
+
+.social-media {
+    display: flex;
+}
+
+.social-icon {
+    height: 46px;
+    width: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(225, 0, 255);
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: .9rem;
+    font-weight: 900;
+    box-shadow: inset 0 0 0 0 rgb(255, 255, 255);
+    transition: 0.3s;
+}
+
+    .social-icon:hover {
+        color: rgb(11, 17, 70);
+        border-color: #4481eb;
+        box-shadow: inset 300px 0 0 0 rgba(144, 64, 235, 0.938);
+    }
+
+.eye {
+    position: absolute;
+    margin-left: 330px;
+    cursor: pointer;
+}
+
+    .eye i {
+        color: rgba(43, 43, 43, 0.781);
+    }
+.btn {
+    width: 200px;
+    background-color: rgb(11, 17, 70);
+    border: none;
+    outline: none;
+    height: 45px;
+    border-radius: 5px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin: 10px 10px;
+    cursor: pointer;
+    transition: 0.5s;
+    font-size: .9rem;
+}
+.sign-up-text {
+    margin: 10px;
+    background-color: rgba(111, 142, 228, 0.404);
+    padding: 10px;
+}
+    .sign-up-text h5 {
+        margin:10px;
+        font-weight: 900;
+        color: #232223;
+    }
+    .sign-up-text p a {
+        font-weight:900;
+        color: darkblue;
+        font-size:.8rem;
+    }
+ .regis-title {
+    position:relative;
+    
+}
+
+    .regis-title h1 {
+        width: 200px;
+        font-size: 1.2rem;
+        font-weight: bolder;
+        letter-spacing:2px;
+        color: rgb(252, 33, 117);
+    }
+
+  .regis-title .title-line {
+        content: "";
+        width: 90px;
+        height: 4px;
+        background-color: #593cfd;
+        border-radius: 10px;
+    }
+
+     .regis-title h3 {
+        width: 350px;
+        font-weight:600;
+        font-size: .9rem;
+        margin-top: 10px;
+        color: rgb(14, 14, 36);
+    }
+
+    .regis-title p {
+        width: 350px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        margin-top: 5px;
+        color: rgb(82, 82, 82);
+    }
+
+.sign-up-form {
+    display: flex;
+}
+
+.sign-up {
+    margin: 20px;
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%,-50%);
+    padding: 50px;
+    background-color: rgba(233, 16, 179, 0.384);
+    border-radius: 10px;
+    box-shadow: 10px 12px 15px 12px rgba(14, 76, 245, 0.404);
+}
+.checkbox-form {
+    width: 400px;
+    margin-left: 20px;
+    font-size: .9rem;
+    color: rgb(110, 110, 110);
+    font-weight: bolder;
+}
+
+    .checkbox-form input {
+        height: 15px;
+        outline: none;
+        color: rgb(145, 145, 145);
+        margin-top: 2px;
+    }
+.singintext {
+    font-size: .9rem;
+    margin: 10px;
+    font-weight: 900;
+    color: rgb(110, 110, 110);
+}
+.error {
+    color: rgb(243, 38, 38);
+    font-weight: 900;
+    margin-left: 15px;
+    font-size: 0.8rem;
+}

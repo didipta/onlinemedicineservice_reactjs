@@ -1,10 +1,13 @@
 import axios from "axios";
+import { Link } from "react-router-dom";
 import '../../css/homepage.css';
 import React, {useState, useEffect} from "react";
 import Slider from "./others/slider";
 import Productlist from "./others/productlist";
 import Footer from "./others/footer";
+import Header from "./others/header";
 const Homepage = ()=>{
+    document.getElementById("title").innerHTML="Homepage | Online Medicine service";
     let url="https://localhost:44301/api/user/homepage";
     const [products, setproducts] = useState([]);
     const [categorie, setcategorie] = useState([]);
@@ -22,23 +25,18 @@ const Homepage = ()=>{
         });
     },[]);
 
+    var useridinfo = null;
+    if(localStorage.getItem('usernames')){
+      var userinfo = JSON.parse(localStorage.getItem('usernames'));
+      useridinfo=userinfo.allinfo.U_username;
+      
+    }
+
 
     return(
         <>
         <div className="user-body">
-         <section id="header">
-        <div className="Top-header">
-            <li className="Top-header-title-1">
-                <a href="https://mail.google.com/mail/u/0/?tab=rm#inbox?compose=GTvVlcSPFdLTrfgDClDqDZSzvbPXKkjGrFcRBfFlCxMPhlvsNwZWwTKVzPRNhwqFCVjCKwNVzWKMS" target="_blank"><i className="fas fa-envelope"></i> Companysd@gmail.com</a>
-                <a href="tel:01881291010"> <i className="fas fa-phone-alt"></i> 01881291010</a>
-            </li>
-            <li className="Top-header-title-2">
-                <a href="#">All Services</a>
-                <a href="/index/Logout"><i className="fas fa-sign-out-alt"></i> Logout</a>
-                <a href="#"><i className="far fa-bell"></i></a>
-            </li>
-        </div>
-    </section>
+         <Header/>
          <div className="user-container">
         <div className="header-mid">
         <div className="middle-header">
@@ -60,8 +58,14 @@ const Homepage = ()=>{
             </div>
         </div>
         <div className="middle-header-rigth">
-            
-                <a href="/index/singinpage" className="profile"><i className="fas fa-user-alt"></i><span style={{color:"black",fontsize:".8rem",marginleft:"2px",fontweight:"900"}}>Log-in</span></a>
+            {
+                userinfo?(
+                    <Link to="/Profile" className="profile"><i className="fas fa-user-alt"></i><span style={{color:"black",fontSize:".8rem",marginLeft:"2px",fontWeight:"900"}}> {useridinfo}</span></Link>
+                ):(
+                    <Link to="/login" className="profile"><i className="fas fa-user-alt"></i><span style={{color:"black",fontSize:".8rem",marginLeft:"2px",fontWeight:"900"}}>Log-in</span></Link>
+                )
+            }
+       
 
             <a href="#"><i className="fas fa-comments"></i></a>
             <a href=""><i className="fas fa-map-marker-alt"></i></a>
@@ -89,7 +93,7 @@ const Homepage = ()=>{
         <div className="CATAGORIES-nav">
         {
                 categorie.map(categories=>(
-                    <li><a href={"/Product/Productshow/"+categories.Id}> {categories.name} </a></li>
+                    <li><Link to={"/productlist/"+categories.Id}>  {categories.name}</Link></li>
                 ))
                }
            

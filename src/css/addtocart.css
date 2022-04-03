@@ -312,10 +312,12 @@
 }
 .product_show_add {
     width: 83%;
+    height: 60vh;
     margin: 10px;
     position: relative;
     left: 6vw;
     top:5vw;
+ 
     
 }
 .payment {

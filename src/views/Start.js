@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import '../css/indexpage.css';
 function Start() {
 document.getElementById("title").innerHTML="Indexpage | Online Medicine service";
@@ -19,7 +20,7 @@ document.getElementById("title").innerHTML="Indexpage | Online Medicine service"
  
 <div className="index_nav">
     <ul>
-        <li><a href="/User/Homepage">HOME</a></li>
+        <li><Link to="/home">HOME</Link></li>
         <li><a>SERVICE</a></li>
         <li><a>ABOUT US</a></li>
         <li><a>CONTACT</a></li>

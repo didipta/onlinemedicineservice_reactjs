@@ -16,7 +16,7 @@ const Footer = ()=>{
         <img src="https://freepikpsd.com/file/2019/10/calling-girl-png-7-Transparent-Images.png" />
         <div class="emergency-title">
             <h5>Can’t find your desired service? Let us know 24/7 in 17321.</h5>
-            <button style={{fontsize:"0.7rem"}}>Request Services</button>
+            <button style={{fontSize:"0.7rem"}}>Request Services</button>
             <button><i class="fas fa-phone-alt"></i>  17321</button>
         </div>
     </div>
@@ -25,8 +25,8 @@ const Footer = ()=>{
             <h4>CONTACT</h4>
             <p>
                 7321<br />
-                info@company
-                <b>Corporate Address:</b>
+                info@company<br/>
+                <b>Corporate Address:</b><br/>
                 House # 57, Road # 25, Block - A,
                 Banani, Dhaka 1212
             </p>

@@ -62,7 +62,7 @@ function Login() {
                 if(usertype=="Customer")
                 {
                     localStorage.setItem('usernames', JSON.stringify(Alluser));
-                    window.location="/home";
+                    window.location="/home"; 
                    
                 }
                 else if (usertype=="Staff") {

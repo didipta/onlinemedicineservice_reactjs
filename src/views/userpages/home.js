@@ -7,6 +7,11 @@ import Productlist from "./others/productlist";
 import Footer from "./others/footer";
 import Header from "./others/header";
 const Homepage = ()=>{
+    var useridinfo = null;
+    
+
+      //////////////////////////////
+
     document.getElementById("title").innerHTML="Homepage | Online Medicine service";
     let url="https://localhost:44301/api/user/homepage";
     const [products, setproducts] = useState([]);
@@ -21,6 +26,7 @@ const Homepage = ()=>{
            setcategorie(resp.data[0].categorie);
             
         }).catch(err=>{
+            window.location="/login";
             console.log(err);
         });
     },[]);
@@ -59,7 +65,7 @@ const Homepage = ()=>{
         </div>
         <div className="middle-header-rigth">
             {
-                userinfo?(
+                useridinfo?(
                     <Link to="/Profile" className="profile"><i className="fas fa-user-alt"></i><span style={{color:"black",fontSize:".8rem",marginLeft:"2px",fontWeight:"900"}}> {useridinfo}</span></Link>
                 ):(
                     <Link to="/login" className="profile"><i className="fas fa-user-alt"></i><span style={{color:"black",fontSize:".8rem",marginLeft:"2px",fontWeight:"900"}}>Log-in</span></Link>
@@ -78,7 +84,7 @@ const Homepage = ()=>{
             <ul>
                 <li className="Catagories"><a href="#"><i className="fas fa-bars"></i> Catagories</a></li>
                 <li><a href="#"><i className="fas fa-home"></i> Home</a></li>
-                <li><a href="/Orders/Addtocart"><i className="fas fa-server"></i> Cart Detalie</a></li>
+                <li><Link to="/Allcartiteam"><i className="fas fa-server"></i> Cart Detalie</Link></li>
                 <li><a href="/Orders/myorders"><i className="fas fa-luggage-cart"></i> My orders</a></li>
                 <li><a href="/Orders/retrunorder"><i className="fas fa-luggage-cart"></i> Return orders</a></li>
                 <li><a href="#"><i className="fas fa-people-carry"></i> Help</a></li>

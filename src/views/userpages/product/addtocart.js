@@ -43,13 +43,50 @@ const Addtocart = ()=>{
           showValuetext.value = i;
       });
     }
-
+////////////////////////////////////////////////
     var useridinfo = null;
+    var username=null;
     if(localStorage.getItem('usernames')){
       var userinfo = JSON.parse(localStorage.getItem('usernames'));
       useridinfo=userinfo.allinfo.U_address;
-      
+      username=userinfo.allinfo.U_username;
     }
+
+
+    const [inputs, setInputs] = useState({
+        username:username,productid:"",item_quantity:""
+    });
+    //////////////////////////////////
+    
+    
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({...values, [name]: value}))
+    }
+    
+    ///Handlesubmit function//////////////////////////
+    
+    const handleSubmit = (event) => {
+        var itemquantity=document.getElementById("item_quantity").value;
+        var productid=document.getElementById("products_Id").value;
+        inputs.item_quantity=itemquantity;
+        inputs.productid=productid;
+        event.preventDefault();
+        console.log(inputs);
+        axios.post("https://localhost:44301/api/user/addtocart",inputs)
+                .then(resp=>{
+                   console.log(resp.data);
+                   window.location="/Allcartiteam"; 
+                   
+                }).catch(err=>{
+                    window.location="/login";
+                    console.log(err);
+                    
+                });
+                
+                
+      }
    
     return(
      <>
@@ -65,8 +102,9 @@ const Addtocart = ()=>{
             <img src={"/img/"+products.P_img} />
         </div>
         <div class="cart-deteils">
-        <form action="#" method="post">
-        <input type="hidden" name="productid" value={products.Id} />
+        <form onSubmit={handleSubmit} method="post">
+        
+        <input type="hidden"  id="products_Id" value={products.Id} />
         <div class="cart-title">
                     <h3>{products.P_name}</h3>
                     <p>Rating is ({totalrat}/5) </p>
@@ -78,7 +116,7 @@ const Addtocart = ()=>{
                 <hr style={{width:"100%", height:"2px", backgroundColor: "rgba(196, 196, 196, 0.315)" ,border: "none"}}/> 
                 <div class="input">
                     <p>Quantity</p>
-                    <input type="number" name="Productquantity" id="value" value="1" min="1"/>
+                    <input type="number" name="Productquantity" id="item_quantity" value="1" min="1" />
 
                 </div>
                 <hr style={{width:"100%", height:"2px", backgroundColor: "rgba(196, 196, 196, 0.315)" ,border: "none"}}/>

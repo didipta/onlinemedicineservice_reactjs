@@ -53,8 +53,10 @@ function Login() {
             axios.post("https://localhost:44301/api/user/Login",obj)
             .then(resp=>{
                 console.log(resp.data);
-                var userinfos = resp.data;
+                var userinfos = resp.data[0].user;
+                var token = resp.data[0].tokes;
                 var Alluser={allinfo:userinfos};
+                var Tokens={tokens:token};
                 console.log(userinfos);
                 var usertype=userinfos.Usertype;
                 console.log( Alluser);
@@ -62,6 +64,7 @@ function Login() {
                 if(usertype=="Customer")
                 {
                     localStorage.setItem('usernames', JSON.stringify(Alluser));
+                    localStorage.setItem('AccessToken', JSON.stringify(Tokens));
                     window.location="/home"; 
                    
                 }
@@ -119,7 +122,7 @@ function Login() {
         <div class="sign-up-text">
             <h5>Hello Friends :)</h5>
             <p>Are you new to this website? Do you like what we offer ?you should 
-            totally join our website and experience community. <Link to="/home">Registration Now... </Link></p>
+            totally join our website and experience community. <Link to="/Signup">Registration Now... </Link></p>
         </div>
         </div>
 

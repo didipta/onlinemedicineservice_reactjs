@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import axios from "axios";
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Start from './views/Start';
@@ -7,8 +8,24 @@ import Homepage from './views/userpages/home';
 import Productaxio from './views/userpages/product/productaxios';
 import Addtocart from './views/userpages/product/addtocart';
 import Userprofileaxois from './views/userpages/profileaxios';
+import Logout from './views/userpages/others/logout';
+import Signup from './views/longinpage/signup';
+import Allcartiteam from './views/userpages/product/Getallcart';
 
 function App() {
+  var token = null;
+  if(localStorage.getItem('AccessToken')){
+    var userinfo = JSON.parse(localStorage.getItem('AccessToken'));
+    token=userinfo.tokens.AccessToken;
+    console.log(token);
+  }
+
+
+  
+  ////////////////////////////
+  
+  axios.defaults.headers.common["Authorization"] = token;
+  console.log(axios.defaults.headers.common["Authorization"]);
   return (
     <Router>
     <Switch>
@@ -19,6 +36,10 @@ function App() {
       <Route exact path="/productlist/:id"><Productaxio/> </Route>
       <Route exact path="/Product/Addtocart/:id"><Addtocart/></Route>
       <Route exact path="/Profile"><Userprofileaxois/></Route>
+      <Route exact path="/Logout"><Logout/></Route>
+      <Route exact path="/Signup"><Signup/></Route>
+      <Route exact path="/Allcartiteam"><Allcartiteam/></Route>
+      
     </Switch>
     </Router>
     

@@ -9,14 +9,26 @@ const Userprofileaxois = ()=>{
     var useridinfo = null;
     if(localStorage.getItem('usernames')){
       var userinfo = JSON.parse(localStorage.getItem('usernames'));
-      useridinfo=userinfo.allinfo;
+      useridinfo=userinfo.allinfo.Id;
+      console.log(userinfo);
     }
        
+    const [profileinfo, setprofileinfo] = useState([]);
+    let url="https://localhost:44301/api/user/profileshow/"+useridinfo;
+    useEffect(()=>{
+        axios.get(url)
+        .then(resp=>{
+           console.log(resp.data);
+           setprofileinfo(resp.data);
+        }).catch(err=>{
+            console.log(err);
+        });
+    },[]);
         return(
             <div>
                 <div class="heading_p_page">
             <span>
-            <Link to="/home">Home </Link><a href="#">/ {useridinfo.U_name}</a>
+            <Link to="/home">Home </Link><a href="#">/ {profileinfo.U_name}</a>
             </span>
         </div>
         <br />
@@ -24,7 +36,7 @@ const Userprofileaxois = ()=>{
                 <Header/>
                 
                 
-                <Userprofile Systemuser={ useridinfo}/>
+                <Userprofile Systemuser={ profileinfo}/>
                
                 
             </div>

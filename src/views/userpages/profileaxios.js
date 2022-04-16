@@ -21,7 +21,10 @@ const Userprofileaxois = ()=>{
            console.log(resp.data);
            setprofileinfo(resp.data);
         }).catch(err=>{
-            console.log(err);
+            localStorage.removeItem('usernames');
+            localStorage.removeItem('AccessToken');
+                    window.location="/login";
+                    console.log(err);
         });
     },[]);
         return(

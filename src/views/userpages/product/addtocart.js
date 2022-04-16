@@ -80,6 +80,7 @@ const Addtocart = ()=>{
                    window.location="/Allcartiteam"; 
                    
                 }).catch(err=>{
+                   
                     window.location="/login";
                     console.log(err);
                     

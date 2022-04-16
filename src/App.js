@@ -11,6 +11,11 @@ import Userprofileaxois from './views/userpages/profileaxios';
 import Logout from './views/userpages/others/logout';
 import Signup from './views/longinpage/signup';
 import Allcartiteam from './views/userpages/product/Getallcart';
+import Allmyorders from './views/userpages/product/Showallorder';
+import Allmyorderdetails from './views/userpages/product/orderdetailes';
+import Retrunorder from './views/userpages/product/returnorder';
+import Returnsall from './views/userpages/product/returnsall';
+import Retrundetailas from './views/userpages/product/retrundetalis';
 
 function App() {
   var token = null;
@@ -39,7 +44,12 @@ function App() {
       <Route exact path="/Logout"><Logout/></Route>
       <Route exact path="/Signup"><Signup/></Route>
       <Route exact path="/Allcartiteam"><Allcartiteam/></Route>
+      <Route exact path="/Allorder"><Allmyorders/> </Route>
+      <Route exact path="/Allorderdetails/:id"><Allmyorderdetails/></Route>
+      <Route exact path="/returnoder/:id"><Retrunorder/></Route>
+      <Route exact path="/Returnsall"><Returnsall/></Route>
       
+      <Route exact path="/Retrunorder/:id"><Retrundetailas/></Route>
     </Switch>
     </Router>
     

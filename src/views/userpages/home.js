@@ -85,8 +85,8 @@ const Homepage = ()=>{
                 <li className="Catagories"><a href="#"><i className="fas fa-bars"></i> Catagories</a></li>
                 <li><a href="#"><i className="fas fa-home"></i> Home</a></li>
                 <li><Link to="/Allcartiteam"><i className="fas fa-server"></i> Cart Detalie</Link></li>
-                <li><a href="/Orders/myorders"><i className="fas fa-luggage-cart"></i> My orders</a></li>
-                <li><a href="/Orders/retrunorder"><i className="fas fa-luggage-cart"></i> Return orders</a></li>
+                <li><Link to="/Allorder"><i className="fas fa-luggage-cart"></i> My orders</Link></li>
+                <li><Link to="/Returnsall"><i className="fas fa-luggage-cart"></i> Return orders</Link></li>
                 <li><a href="#"><i className="fas fa-people-carry"></i> Help</a></li>
                 <li><a href="#"><i className="fas fa-info-circle"></i> About</a></li>
                 <li><a href="#"><i className="fas fa-address-book"></i> Contact Us</a></li>

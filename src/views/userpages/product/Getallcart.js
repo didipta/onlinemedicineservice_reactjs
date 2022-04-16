@@ -7,11 +7,37 @@ import Header from "./../others/header";
 import Productitem from "./product";
 
 const Allcartiteam = ()=>{
+
+    function checkclick() {
+        document.getElementById("payment").style.display = "block";
+    }
+    function bkashclick() {
+
+        document.getElementById("bkashback").style.display = "block";
+        document.getElementById("cardback").style.display = "none";
+        document.getElementById("cashback").style.display = "none";
+    }
+    function cashclick() {
+        document.getElementById("bkashback").style.display = "none";
+        document.getElementById("cashback").style.display = "block";
+        document.getElementById("cardback").style.display = "none";
+    }
+    function cardclick() {
+        document.getElementById("bkashback").style.display = "none";
+        document.getElementById("cashback").style.display = "none";
+        document.getElementById("cardback").style.display = "block";
+    }
+    function backclick() {
+        document.getElementById("payment").style.display = "none";
+    
+    }
    
     var username=null;
+    var userid=null;
     if(localStorage.getItem('usernames')){
       var userinfo = JSON.parse(localStorage.getItem('usernames'));
       username=userinfo.allinfo.U_username;
+      userid=userinfo.allinfo.Id;
     }
     let url="https://localhost:44301/api/user/cartiteam/"+username;
     const [products, setproducts] = useState([]);
@@ -22,6 +48,7 @@ const Allcartiteam = ()=>{
            console.log(resp.data);
             setproducts(resp.data);
         }).catch(err=>{
+            
             window.location="/login";
             console.log(err);
         });
@@ -43,13 +70,13 @@ const Allcartiteam = ()=>{
     products.forEach(added)
     function added(carddetail)
     {
-        id +=carddetail.id;
+        id +=carddetail.Id;
         totalQuantity +=Number(carddetail.P_O_quantity);
         totalprice +=Number( carddetail.P_tprice);
         alltotalprice +=Number(carddetail.P_tprice);
-        orderid=((totalQuantity*1000)+(alltotalprice*10))*(countcart+id);
+       
     }
-
+    orderid=((totalQuantity*100)+(id*100+101011000));
     function delet(Id)
     {
        
@@ -63,6 +90,70 @@ const Allcartiteam = ()=>{
             });
         
     }
+
+    ///////////////////////
+    const [inputs, setInputs] = useState({
+        orderid:"",totaleprice:"",Paymenttype:"",userid:userid,quantiy:""
+    });
+    //////////////////////////
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({...values, [name]: value}))
+    }
+    ///////////Bkashmathoed///////////////
+    const handleSubmit = (event) => {      
+        event.preventDefault();
+        inputs.Paymenttype=document.getElementById("Bkash").value;
+        console.log(inputs);
+        axios.post("https://localhost:44301/api/user/orderproduct",inputs)
+        .then(resp=>{
+           console.log(resp.data);
+           window.location="/home";
+        }).catch(err=>{
+            
+            console.log(err);
+            
+        });
+                
+         
+      }
+      ////////////Cardmethod///////////////////
+      const handleSubmit2 = (event) => {
+        event.preventDefault();
+        inputs.Paymenttype=document.getElementById("card").value;
+        console.log(inputs);
+        axios.post("https://localhost:44301/api/user/orderproduct",inputs)
+        .then(resp=>{
+           console.log(resp.data);
+           window.location="/home";
+        }).catch(err=>{
+            
+            console.log(err);
+            
+        });
+                
+         
+      }
+      /////////////Cashmethod///////////////////
+      const handleSubmit3 = (event) => {
+        event.preventDefault();
+        inputs.Paymenttype=document.getElementById("Cash").value;
+        console.log(inputs);
+        axios.post("https://localhost:44301/api/user/orderproduct",inputs)
+            .then(resp=>{
+               console.log(resp.data);
+               window.location="/home";
+            }).catch(err=>{
+                
+                console.log(err);
+                
+            });
+                
+         
+      }
+     ///////////////////////////////////
+
     return(
         <>
         <Header/>
@@ -115,7 +206,7 @@ const Allcartiteam = ()=>{
                     <h4 style={{width: "300px"}}>Total Price </h4>
                     <p style={{width: "200px", marginLeft: "200px", fontSize: "0.9rem"}}>{totalprice+40} ৳</p>
                 </div>
-                <button class="btn" style={{backgroundColor:"forestgreen"}} onclick="checkclick()">Checkout</button>
+                <button class="btn" style={{backgroundColor:"forestgreen"}} onClick={checkclick}>Checkout</button>
             </div>
     
     
@@ -127,6 +218,64 @@ const Allcartiteam = ()=>{
         )
           
         }
+
+            <div class="payment" id="payment">
+            <div class="cancel" onClick={backclick}>
+            <i class="fas fa-times" ></i>
+            </div>
+
+            <div class="title-pay">
+            <h3>Payment Type </h3>
+            <hr style={{width: "100%", height:"1px", backgroundColor:"rgb(255 255 255)", border: "none"}}/>
+        <div class="pay-type">
+            <img src="/img/bkash.png" onClick={bkashclick} />
+            <img src="/img/cash.png" onClick={cashclick} />
+            <img src="/img/card.png" onClick={cardclick} />
+        </div>
+        <hr style={{width: "100%", height:"1px", backgroundColor:"rgb(255 255 255)", border: "none"}}/>
+        <div class="confirm">
+
+        <form onSubmit={handleSubmit} class="paymentform" id="bkashback" method="post">
+             <input type="hidden" name="orderid" value={inputs.orderid="#order"+orderid}/>
+            <input type="hidden" name="totaleprice" value={inputs.totaleprice=alltotalprice+40}/>
+            <input type="hidden" id="Bkash" value="Bkash"/>
+            <input type="hidden" name="quantiy" value={inputs.quantiy=totalQuantity}/>
+            <h4>Bkash in Payment</h4>
+            <input type="text" name="phonenu" id="" placeholder="Phone number" required/><br/>
+            <input type="password" name="password" id="" placeholder="password" required/>
+            <button class="btn">Confirm Order</button>
+        </form>
+        </div>
+        <div class="confirm">
+
+<form onSubmit={handleSubmit2} class="paymentform" id="cardback" method="post">
+            <input type="hidden" name="orderid" value={inputs.orderid="#order"+orderid}/>
+            <input type="hidden" name="totaleprice" value={inputs.totaleprice=alltotalprice+40}/>
+            <input type="hidden" id="card" value="Card"/>
+            <input type="hidden" name="quantiy" value={inputs.quantiy=totalQuantity}/>
+
+    <h4>Card in Payment</h4>
+    <input type="text" name="phonenu" id="" placeholder="Card id" required/><br/>
+    <input type="password" name="password" id="" placeholder="password" required/>
+    <button class="btn">Confirm Order</button>
+</form>
+
+</div>
+<div class="confirm">
+
+<form onSubmit={handleSubmit3} class="paymentform" id="cashback" method="post">
+   
+    <input type="hidden" name="orderid" value={inputs.orderid="#order"+orderid}/>
+            <input type="hidden" name="totaleprice" value={inputs.totaleprice=alltotalprice+40}/>
+            <input type="hidden" id="Cash" value="Cash"/>
+            <input type="hidden" name="quantiy" value={inputs.quantiy=totalQuantity}/>
+
+    <h4>Cash in Payment</h4>
+    <button class="btn">Confirm Order</button>
+</form>
+</div>
+            </div>
+            </div>
         </>
     );
 }
